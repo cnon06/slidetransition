@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
-  Home({Key? key}) : super(key: key);
+  const Home({Key? key}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
@@ -10,15 +10,14 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
  late AnimationController animationController;
  late Animation <Offset> anime;
- late Duration duration = Duration(milliseconds: 1500);
+ late Duration duration = const Duration(milliseconds: 1500);
 
 
   @override
   void initState() {
     animationController = AnimationController(vsync: this,duration: duration);
-    anime = Tween(begin: Offset(0,0), end: Offset(1,4)).animate(CurvedAnimation(parent: animationController, curve: Curves.easeIn));
+    anime = Tween(begin: const Offset(0,0), end: const Offset(1,4)).animate(CurvedAnimation(parent: animationController, curve: Curves.easeIn));
     animationController.forward();
-    // TODO: implement initState
     super.initState();
   }
 
@@ -26,7 +25,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     return  Scaffold(
         appBar: AppBar(
-          title: Text('Material App Bar'),
+          title: const Text('Material App Bar'),
         ),
         body: SlideTransition(
           position: anime,
@@ -35,7 +34,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             width: 200,
             height: 100,
             color: Colors.amber,
-            child: Text('Hello World'),
+            child: const Text('Hello World'),
           ),
         ),
       );
